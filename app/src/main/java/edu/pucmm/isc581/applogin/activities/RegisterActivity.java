@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,16 +21,31 @@ public class RegisterActivity extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
 
     ImageView profileImage;
+    TextView forgotPassword, login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         profileImage = findViewById(R.id.profileImage);
+        forgotPassword = findViewById(R.id.forgotPasswordTextView);
+        login = findViewById(R.id.loginTextView);
+
         profileImage.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)==0)
                 loadImage();
             else
                 ActivityCompat.requestPermissions(RegisterActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 200);
+        });
+
+        forgotPassword.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), ForgotPasswordActivity.class);
+            startActivity(i);
+        });
+
+        login.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), LoginActivity.class);
+            startActivity(i);
         });
     }
 
