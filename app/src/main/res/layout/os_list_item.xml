@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        app:cardBackgroundColor="#ACACAC"
+        app:cardBackgroundColor="#E6FAE6"
         app:cardElevation="5dp"
         app:contentPadding="10dp"
         app:cardUseCompatPadding="true"
@@ -38,21 +38,24 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintTop_toBottomOf="@+id/textViewAndroidVersion"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="28dp" app:layout_constraintVertical_bias="0.407"/>
+                    android:layout_marginStart="28dp" app:layout_constraintVertical_bias="0"
+                    android:layout_marginTop="24dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/androidVersionName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textViewAndroidVersion"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.124" app:layout_constraintVertical_bias="0.146"/>
+                    app:layout_constraintHorizontal_bias="0.124" app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginTop="24dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/apiLevelNumber"
                     app:layout_constraintStart_toEndOf="@+id/textViewApiVersion"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/androidVersionName"
-                    app:layout_constraintHorizontal_bias="0.081" app:layout_constraintVertical_bias="0.432"/>
+                    app:layout_constraintHorizontal_bias="0.13" app:layout_constraintVertical_bias="0"
+                    android:layout_marginTop="32dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

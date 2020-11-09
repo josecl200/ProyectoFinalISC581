@@ -60,23 +60,23 @@ public class OsFragment extends Fragment {
     }
 
     public void fillOsList(List<OsDataModel> list){
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "NO NAME", "1-2"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Cupcake", "3"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Donut", "4"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Eclair", "5-7"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Froyo", "8"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Gingerbread", "9-10"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "HoneyComb", "11-13"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Ice Cream Sandwich", "14-15"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Jelly Bean", "16-18"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "KitKat", "19-20"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Lollipop", "21-22"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Marshmallow", "23"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Nougat", "24-25"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Oreo", "26-27"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Pie", "28"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Android 10 (Q)", "29"));
-        list.add(new OsDataModel(Integer.valueOf(R.drawable.ic_launcher_foreground), "Android 11", "30"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.android), "NO NAME", "1-2"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.cupcake), "Cupcake", "3"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.donut), "Donut", "4"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.eclair), "Eclair", "5-7"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.froyo), "Froyo", "8"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.gingerbread), "Gingerbread", "9-10"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.honeycomb), "HoneyComb", "11-13"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.ics), "Ice Cream Sandwich", "14-15"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.jellybean), "Jelly Bean", "16-18"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.kitkat), "KitKat", "19-20"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.lollipop), "Lollipop", "21-22"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.marshmallow), "Marshmallow", "23"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.nougat), "Nougat", "24-25"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.oreo), "Oreo", "26-27"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.pie), "Pie", "28"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.q), "Android 10 (Q)", "29"));
+        list.add(new OsDataModel(Integer.valueOf(R.drawable.android11), "Android 11", "30"));
     }
 }
 
