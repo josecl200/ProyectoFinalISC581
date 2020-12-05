@@ -3,12 +3,17 @@ package edu.pucmm.isc581.applogin.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import edu.pucmm.isc581.applogin.R;
+import edu.pucmm.isc581.applogin.Singleton;
+import edu.pucmm.isc581.applogin.dbDaos.UsuarioDAO;
+import edu.pucmm.isc581.applogin.dbEntities.Usuario;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,21 +40,41 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             manager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-            if (!email.getText().toString().trim().isEmpty() && !password.getText().toString().trim().isEmpty()){
-                loginBulto.setVisibility(View.VISIBLE);
-                Intent i = new Intent(v.getContext(), MainActivity.class);
-                v.postDelayed(() -> {
-                    startActivity(i);
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            loginBulto.setVisibility(View.INVISIBLE);
-                        }
-                    }, 1000);
-                },3500);
+            boolean valid = true;
+            String emailVal = email.getText().toString().trim();
+            String passwordVal = password.getText().toString().trim();
+            loginBulto.setVisibility(View.VISIBLE);
+            if(emailVal.isEmpty() || !emailVal.matches("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                    "[a-zA-Z0-9_+&*-]+)*@" +
+                    "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                    "A-Z]{2,7}$")){
+                email.setError("Debe proveer un email valido");
+                valid = false;
+            }
+            if(passwordVal.isEmpty()){
+                password.setError("Debe escribir una contraseña");
+                valid = false;
+            }
 
-            }else{
-                Toast.makeText(v.getContext(), "Bad credentials", Toast.LENGTH_LONG).show();
+            if(!valid)
+                loginBulto.setVisibility(View.INVISIBLE);
+            else{
+                Singleton singleton = Singleton.getInstance();
+                UsuarioDAO usuarioDAO = singleton.getDataBased(getApplicationContext()).getUsuarioDAO();
+                Usuario usuario = usuarioDAO.getUserForLogin(emailVal, passwordVal);
+                if (usuario != null){
+                    singleton.logUser(usuario);
+                    Intent i = new Intent(v.getContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }else{
+                    loginBulto.setVisibility(View.INVISIBLE);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
+                    alertDialogBuilder.setTitle("Credenciales incorrectas");
+                    alertDialogBuilder.setMessage("Sus credenciales no fueron encontradas, revise si el correo y la contraseña escrita son correctos");
+                    alertDialogBuilder.show();
+                }
+
             }
         });
         registerButton.setOnClickListener(v -> {

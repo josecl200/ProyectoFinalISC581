@@ -30,7 +30,7 @@ public class Singleton {
     public DBWrapper getDataBased(Context context){
         if (dataBased == null){
             dataBased= Room.databaseBuilder(context.getApplicationContext(),
-                    DBWrapper.class, "instance.db").allowMainThreadQueries().build();
+                    DBWrapper.class, "instance.db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         }
         return dataBased;
     }

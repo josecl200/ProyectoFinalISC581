@@ -13,7 +13,7 @@ public class Usuario {
     private Long idUsuario;
     private String email;
     private String password;
-    private String linkImagen;
+    private String imagen;
     private String telefono;
     private String direccion;
 }
