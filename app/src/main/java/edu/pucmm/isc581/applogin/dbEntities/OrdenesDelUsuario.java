@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data @NoArgsConstructor
 public class OrdenesDelUsuario {
     @Embedded
     private Usuario usuario;

@@ -8,10 +8,10 @@ public interface OrdenDAO {
     public long insertOrden(Orden orden);
 
     @Update
-    public long updateOrden(Orden orden);
+    public void updateOrden(Orden orden);
 
     @Delete
-    public long deleteOrden(Orden orden);
+    public void deleteOrden(Orden orden);
 
 
 

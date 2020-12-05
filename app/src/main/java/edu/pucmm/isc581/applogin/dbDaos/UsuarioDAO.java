@@ -24,10 +24,10 @@ public interface UsuarioDAO {
     public long registerUser(Usuario usuario);
 
     @Update
-    public long updateUser(Usuario usuario);
+    public void updateUser(Usuario usuario);
 
     @Delete
-    public long deleteUser(Usuario usuario);
+    public void deleteUser(Usuario usuario);
 
 
 }

@@ -20,8 +20,8 @@ public interface ArticuloDAO {
     public List<ArticulosConFotosYCategoria> getLatestArticulos();
 
     @Update
-    public long updateArticulo(Articulo articulo);
+    public void updateArticulo(Articulo articulo);
 
     @Delete
-    public long deleteArticulo(Articulo articulo);
+    public void deleteArticulo(Articulo articulo);
 }

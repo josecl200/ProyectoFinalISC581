@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 public class ArticulosConFotosYCategoria {
     @Embedded
     private Articulo articulo;
-    @Relation(parentColumn = "idCategoria", entityColumn = "idArticulo")
+    @Relation(parentColumn = "idArticulo", entityColumn = "idCategoria")
     private Categoria categoria;
     @Relation(parentColumn = "idArticulo", entityColumn = "idArticulo")
     private List<Foto> fotos;

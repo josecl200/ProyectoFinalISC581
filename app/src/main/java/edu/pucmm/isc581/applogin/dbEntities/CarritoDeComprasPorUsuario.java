@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 public class CarritoDeComprasPorUsuario {
     @Embedded private Usuario usuario;
     @Relation(parentColumn = "idUsuario", entityColumn = "idArticulo", associateBy = @Junction(CarritoDeCompra.class))

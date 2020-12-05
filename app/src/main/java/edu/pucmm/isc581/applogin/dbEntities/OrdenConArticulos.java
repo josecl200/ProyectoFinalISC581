@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
 public class OrdenConArticulos {
     @Embedded
     private Orden orden;

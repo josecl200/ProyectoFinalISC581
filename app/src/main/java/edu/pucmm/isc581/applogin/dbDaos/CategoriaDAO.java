@@ -11,10 +11,10 @@ public interface CategoriaDAO {
     public long insertCategoria(Categoria categoria);
 
     @Update
-    public long updateCategoria(Categoria categoria);
+    public void updateCategoria(Categoria categoria);
 
     @Delete
-    public long deleteCategoria(Categoria categoria);
+    public void deleteCategoria(Categoria categoria);
 
     @Query("SELECT * FROM CATEGORIA")
     public List<Categoria> getCategorias();

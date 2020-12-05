@@ -17,6 +17,7 @@ public class UploadImages extends AsyncTask<Object, Void, Void> {
         namesAndImages.forEach(
                 (name, image) -> ImageHelper.storeImageInBlobStorage(appContext, image, name)
         );
+        return null;
     }
 
 
