@@ -43,4 +43,6 @@
     <string name="android_version">Android </string>
     <string name="api_level">API Level </string>
 
+    <string name="BLOB_URL_BASE">https://temaepeciale.blob.core.windows.net/temaepeciale/</string>
+
 </resources>
