@@ -40,9 +40,11 @@
     <string name="menu_profile">My Profile</string>
     <string name="menu_logout">Log out</string>
 
-    <string name="android_version">Android </string>
-    <string name="api_level">API Level </string>
+    <string name="android_version">Android</string>
+    <string name="api_level">API Level</string>
 
     <string name="BLOB_URL_BASE">https://temaepeciale.blob.core.windows.net/temaepeciale/</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

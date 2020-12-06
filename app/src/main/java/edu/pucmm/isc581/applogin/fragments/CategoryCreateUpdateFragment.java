@@ -99,9 +99,21 @@ public class CategoryCreateUpdateFragment extends Fragment {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 200);
         });
         btnSave.setOnClickListener(v -> {
-            finalCategoria.setNombre(nombre.getText().toString().trim());
-            if (modify) {
-                if (modifiedImage){
+            if(nombre.getText().toString().isEmpty()){
+                nombre.setError("Debe escribir un nombre para la categoria");
+            } else {
+                finalCategoria.setNombre(nombre.getText().toString().trim());
+                if (modify) {
+                    if (modifiedImage){
+                        Map<String, Bitmap> fotoToUpload = new HashMap<>();
+                        Bitmap bitmap = getImageBitmap(categoryImage.getDrawable());
+                        fotoToUpload.put(finalCategoria.getIdCategoria().toString().concat(".category.jpg"), bitmap);
+                        finalCategoria.setFoto(finalCategoria.getIdCategoria().toString().concat(".category.jpg"));
+                        UploadImages uploadImages = new UploadImages();
+                        uploadImages.execute(fotoToUpload, getActivity().getApplicationContext());
+                    }
+                } else {
+                    finalCategoria.setIdCategoria(categoriaDAO.insertCategoria(finalCategoria));
                     Map<String, Bitmap> fotoToUpload = new HashMap<>();
                     Bitmap bitmap = getImageBitmap(categoryImage.getDrawable());
                     fotoToUpload.put(finalCategoria.getIdCategoria().toString().concat(".category.jpg"), bitmap);
@@ -109,17 +121,9 @@ public class CategoryCreateUpdateFragment extends Fragment {
                     UploadImages uploadImages = new UploadImages();
                     uploadImages.execute(fotoToUpload, getActivity().getApplicationContext());
                 }
-            } else {
-                finalCategoria.setIdCategoria(categoriaDAO.insertCategoria(finalCategoria));
-                Map<String, Bitmap> fotoToUpload = new HashMap<>();
-                Bitmap bitmap = getImageBitmap(categoryImage.getDrawable());
-                fotoToUpload.put(finalCategoria.getIdCategoria().toString().concat(".category.jpg"), bitmap);
-                finalCategoria.setFoto(finalCategoria.getIdCategoria().toString().concat(".category.jpg"));
-                UploadImages uploadImages = new UploadImages();
-                uploadImages.execute(fotoToUpload, getActivity().getApplicationContext());
+                categoriaDAO.updateCategoria(finalCategoria);
+                Navigation.findNavController(v).navigateUp();
             }
-            categoriaDAO.updateCategoria(finalCategoria);
-            Navigation.findNavController(v).navigateUp();
         });
         return view;
     }
