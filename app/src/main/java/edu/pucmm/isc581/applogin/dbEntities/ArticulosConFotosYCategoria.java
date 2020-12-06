@@ -12,7 +12,7 @@ import java.util.List;
 public class ArticulosConFotosYCategoria {
     @Embedded
     private Articulo articulo;
-    @Relation(parentColumn = "idArticulo", entityColumn = "idCategoria")
+    @Relation(parentColumn = "idCategoria", entityColumn = "idCategoria")
     private Categoria categoria;
     @Relation(parentColumn = "idArticulo", entityColumn = "idArticulo")
     private List<Foto> fotos;
