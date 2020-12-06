@@ -12,7 +12,7 @@ public class UploadImages extends AsyncTask<Object, Void, Void> {
     //Recibe un HashMap de nombre de la imagen y el Bitmap, y el applicationContext
     @Override
     protected Void doInBackground(Object... objects) {
-        HashMap<String, Bitmap> namesAndImages = (HashMap<String, Bitmap>) objects[2];
+        HashMap<String, Bitmap> namesAndImages = (HashMap<String, Bitmap>) objects[0];
         Context appContext = (Context) objects[1];
         namesAndImages.forEach(
                 (name, image) -> ImageHelper.storeImageInBlobStorage(appContext, image, name)

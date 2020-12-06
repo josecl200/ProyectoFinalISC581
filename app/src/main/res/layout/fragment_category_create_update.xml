@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".fragments.CategoryCreateUpdateFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="64dp"
+                android:id="@+id/cardView" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp">
+
+            <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp" app:srcCompat="@drawable/ic_baseline_list_24"
+                    android:id="@+id/categoryImage"
+            />
+        </androidx.cardview.widget.CardView>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginEnd="8dp" android:id="@+id/textInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="hint" android:id="@+id/categoryNameTextInput"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+                android:text="Guardar"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="@drawable/roundbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/btnSave"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.75"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

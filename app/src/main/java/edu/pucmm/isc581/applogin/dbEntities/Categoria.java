@@ -11,4 +11,5 @@ public class Categoria {
     @PrimaryKey
     private Long idCategoria;
     private String nombre;
+    private String foto;
 }

@@ -16,4 +16,27 @@
             android:name="edu.pucmm.isc581.applogin.fragments.OsFragment"
             android:label="@string/app_name"
             tools:layout="@layout/fragment_os"/>
+
+    <fragment
+            android:id="@+id/nav_list_category"
+            android:name="edu.pucmm.isc581.applogin.fragments.CategoryListFragment"
+            android:label="Categorias"
+            tools:layout="@layout/fragment_category_list">
+        <action android:id="@+id/action_nav_list_category_to_create_category2" app:destination="@id/create_category"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/create_category"
+            android:name="edu.pucmm.isc581.applogin.fragments.CategoryCreateUpdateFragment"
+            android:label="Crear categoria"
+            tools:layout="@layout/fragment_category_create_update">
+        <argument
+                android:name="modify"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        <argument
+                android:name="id"
+                app:argType="long"
+                android:defaultValue="-1L" />
+    </fragment>
 </navigation>

@@ -8,7 +8,7 @@ import java.util.List;
 @Dao
 public interface CategoriaDAO {
     @Insert
-    public long insertCategoria(Categoria categoria);
+    public Long insertCategoria(Categoria categoria);
 
     @Update
     public void updateCategoria(Categoria categoria);
@@ -18,6 +18,9 @@ public interface CategoriaDAO {
 
     @Query("SELECT * FROM CATEGORIA")
     public List<Categoria> getCategorias();
+
+    @Query("SELECT * FROM CATEGORIA WHERE idCategoria = :id")
+    public Categoria getCategoria(long id);
 
 
 
