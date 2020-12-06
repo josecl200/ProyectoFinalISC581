@@ -47,9 +47,6 @@ public class CategoryListFragment extends Fragment {
         //TODO: RecyclerView
         FloatingActionButton createButton = view.findViewById(R.id.createCategoryButton);
         createButton.setOnClickListener(v -> {
-            Singleton singleton = Singleton.getInstance();
-            CategoriaDAO categoriaDAO = singleton.getDataBased(getActivity().getApplicationContext()).getCategoriaDAO();
-            Log.wtf("Categorias: ", categoriaDAO.getCategorias().toString());
             Navigation.findNavController(v).navigate(R.id.action_nav_list_category_to_create_category2);
         });
         return view;
