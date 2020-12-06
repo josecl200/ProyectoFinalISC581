@@ -19,6 +19,9 @@ public interface CategoriaDAO {
     @Query("SELECT * FROM CATEGORIA")
     public List<Categoria> getCategorias();
 
+    @Query("SELECT nombre FROM CATEGORIA")
+    public List<String> getNombreCategorias();
+
     @Query("SELECT * FROM CATEGORIA WHERE idCategoria = :id")
     public Categoria getCategoria(long id);
 

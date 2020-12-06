@@ -13,6 +13,9 @@ public interface ArticuloDAO {
     @Transaction @Query("SELECT * FROM Articulo")
     public List<ArticulosConFotosYCategoria> getArticulos();
 
+    @Transaction @Query("SELECT * FROM Articulo WHERE idArticulo = :id")
+    public ArticulosConFotosYCategoria getArticulo(Long id);
+
     @Insert
     public long insertArticulo(Articulo articulo);
 
