@@ -1,6 +1,8 @@
 package edu.pucmm.isc581.applogin.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
@@ -42,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         ImageView headerImage = navigationView.getHeaderView(0).findViewById(R.id.profileImageHeader);
         Glide.with(this).load(getString(R.string.BLOB_URL_BASE) + singleton.getLoggedUser().getImagen()).centerCrop().into(headerImage);
+
+        MenuItem logoutItem = (MenuItem) navigationView.getMenu().findItem(R.id.nav_logout);
+        logoutItem.setOnMenuItemClickListener((menuItem) -> {
+            singleton.logUser(null);
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
+            return true;
+        });
 
     }
 
