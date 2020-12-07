@@ -17,6 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
 
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -26,6 +26,13 @@
     </fragment>
 
     <fragment
+            android:id="@+id/product_detail"
+            android:name="edu.pucmm.isc581.applogin.ui.productos.DetallesProducto"
+            android:label="Detalle"
+            tools:layout="@layout/fragment_detalles_producto">
+    </fragment>
+
+    <fragment
             android:id="@+id/create_category"
             android:name="edu.pucmm.isc581.applogin.fragments.CategoryCreateUpdateFragment"
             android:label="Crear categoria"
