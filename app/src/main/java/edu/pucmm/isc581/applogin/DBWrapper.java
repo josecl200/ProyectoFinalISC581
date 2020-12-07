@@ -9,7 +9,7 @@ import edu.pucmm.isc581.applogin.dbEntities.*;
 
 import java.util.Calendar;
 
-@Database(entities = {Articulo.class, CarritoDeCompra.class, Categoria.class, Foto.class, Orden.class, Usuario.class, OrdenesYArticulos.class}, version = 4)
+@Database(entities = {Articulo.class, CarritoDeCompra.class, Categoria.class, Foto.class, Orden.class, Usuario.class, OrdenesYArticulos.class}, version = 5)
 public abstract class DBWrapper extends RoomDatabase {
     public abstract ArticuloDAO getArticuloDAO();
     public abstract CategoriaDAO getCategoriaDAO();

@@ -50,14 +50,21 @@ public class ProfileFragment extends Fragment {
         email = view.findViewById(R.id.emailTextView);
         contact = view.findViewById(R.id.contactTextView);
         address = view.findViewById(R.id.addressTextView);
-        secondaryAddress = view.findViewWithTag(R.id.secondaryAddressTextView);
+        secondaryAddress = view.findViewById(R.id.secondaryAddressTextView);
         btnEditar = view.findViewById(R.id.btnUpdate);
 
         Glide.with(this).load(getString(R.string.BLOB_URL_BASE) + singleton.getLoggedUser().getImagen()).centerCrop().into(profilePicture);
         username.setText(singleton.getLoggedUser().getUsername());
         email.setText(singleton.getLoggedUser().getEmail());
         contact.setText(singleton.getLoggedUser().getTelefono());
-        //FALTA AGREGAR DIRECCIONES
+        if(singleton.getLoggedUser().getDireccion().isEmpty()){
+            address.setError("Debe ingresar una dirección lo más pronto posible.");
+            secondaryAddress.setText(singleton.getLoggedUser().getDireccion2());
+        }
+        else{
+            address.setText(singleton.getLoggedUser().getDireccion());
+            secondaryAddress.setText(singleton.getLoggedUser().getDireccion2());
+        }
         btnEditar.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_profile_nav_to_editProfile);
         });

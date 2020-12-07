@@ -19,5 +19,6 @@ public class Usuario {
     private String imagen;
     private String telefono;
     private String direccion;
+    private String direccion2;
     
 }
