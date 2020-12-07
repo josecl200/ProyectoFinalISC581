@@ -23,7 +23,9 @@ import java.util.List;
 import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
 import edu.pucmm.isc581.applogin.dbDaos.ArticuloDAO;
+import edu.pucmm.isc581.applogin.dbDaos.CarritoDeDAO;
 import edu.pucmm.isc581.applogin.dbEntities.ArticulosConFotosYCategoria;
+import edu.pucmm.isc581.applogin.dbEntities.CarritoDeCompra;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -72,6 +74,13 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public void bindData(ArticulosConFotosYCategoria articulosConFotosYCategoria, int position, Context context, ProductListAdapter productListAdapter) {
             Glide.with(context).load(context.getString(R.string.BLOB_URL_BASE) + articulosConFotosYCategoria.getFotos().get(0).getLinkImagen()).into(imagenProducto);
             nombreProducto.setText(articulosConFotosYCategoria.getArticulo().getNombre());
+            imagenProducto.setOnClickListener(v -> {
+                Bundle args = new Bundle();
+                CarritoDeDAO carritoDeDAO = singleton.getDataBased(context).getCarritoDeDAO();
+                args.putLong("idArticulo", articulosConFotosYCategoria.getArticulo().getIdArticulo());
+                args.putInt("cantCarrito", carritoDeDAO.ArticleFromMyCarrito(articulosConFotosYCategoria.getArticulo().getIdArticulo(), singleton.getLoggedUser().getIdUsuario())!=null ? carritoDeDAO.ArticleFromMyCarrito(articulosConFotosYCategoria.getArticulo().getIdArticulo(), singleton.getLoggedUser().getIdUsuario()).getCantidad() : 1);
+                Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_details, args);
+            });
             precioProducto.setText(articulosConFotosYCategoria.getArticulo().getPrecio().toString());
             descripcionProducto.setText(articulosConFotosYCategoria.getArticulo().getDescripcion());
             botonMenu.setOnClickListener(v -> {

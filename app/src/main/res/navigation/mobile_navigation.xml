@@ -30,6 +30,10 @@
             android:name="edu.pucmm.isc581.applogin.ui.productos.DetallesProducto"
             android:label="Detalle"
             tools:layout="@layout/fragment_detalles_producto">
+        <argument
+                android:name="idArticulo"
+                app:argType="long"
+                android:defaultValue="-1L" />
     </fragment>
 
     <fragment
@@ -53,6 +57,8 @@
             android:label="Articulos"
             tools:layout="@layout/fragment_article_list">
         <action android:id="@+id/action_nav_list_article_to_create_article" app:destination="@id/create_article"/>
+        <action android:id="@+id/action_nav_list_article_to_details" app:destination="@id/product_detail"/>
+
         <argument
                 android:name="idCategoria"
                 app:argType="long"
