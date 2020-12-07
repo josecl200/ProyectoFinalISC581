@@ -16,5 +16,6 @@ public abstract class DBWrapper extends RoomDatabase {
     public abstract FotosDAO getFotosDAO();
     public abstract OrdenDAO getOrdenDAO();
     public abstract UsuarioDAO getUsuarioDAO();
+    public abstract CarritoDeDAO getCarritoDeDAO();
 
 }
