@@ -28,16 +28,16 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/btnUpdate"
+            android:id="@+id/btnGuardar"
             android:layout_width="125dp"
             android:layout_height="53dp"
             android:layout_marginTop="44dp"
             android:background="@drawable/roundbutton"
             android:shadowColor="@color/colorPrimaryDark"
-            android:text="Edit Profile"
+            android:text="Save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/secondaryAddressTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/secondaryAddressEditText" />
 
         <TextView
             android:id="@+id/textView"
@@ -50,8 +50,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <TextView
-            android:id="@+id/usernameTextView"
+        <EditText
+            android:id="@+id/usernameEditText"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -69,15 +69,16 @@
             android:text="E-mail"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
-        <TextView
-            android:id="@+id/emailTextView"
+        <EditText
+            android:id="@+id/emailEditText"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="youremail"
+            android:inputType="textEmailAddress"
+            android:text=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -90,15 +91,16 @@
             android:text="Contact"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
         <TextView
-            android:id="@+id/contactTextView"
+            android:id="@+id/contactEditText"
             android:layout_width="331dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="Contact"
+            android:inputType="phone"
+            android:text=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -111,10 +113,10 @@
             android:text="Shipping Address"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contactTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/contactEditText" />
 
-        <TextView
-            android:id="@+id/addressTextView"
+        <EditText
+            android:id="@+id/addressEditText"
             android:layout_width="333dp"
             android:layout_height="45dp"
             android:layout_marginStart="24dp"
@@ -132,16 +134,17 @@
             android:text="Secondary Shipping Address"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/addressEditText" />
 
-        <TextView
-            android:id="@+id/secondaryAddressTextView"
+        <EditText
+            android:id="@+id/secondaryAddressEditText"
             android:layout_width="331dp"
             android:layout_height="51dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

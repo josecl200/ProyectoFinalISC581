@@ -65,6 +65,8 @@
                 android:defaultValue="-1L" />
     </fragment>
 
+
+
     <fragment
             android:id="@+id/create_article"
             android:name="edu.pucmm.isc581.applogin.fragments.ArticleCreateUpdateFragment"
@@ -79,4 +81,6 @@
                 app:argType="long"
                 android:defaultValue="-1L" />
     </fragment>
+   
+
 </navigation>
