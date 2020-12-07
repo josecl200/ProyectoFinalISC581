@@ -28,6 +28,9 @@ public interface ArticuloDAO {
     @Query("SELECT COUNT(*) FROM ARTICULO WHERE idCategoria = :idCategoria")
     public Integer cantArticulosConCategoria(Long idCategoria);
 
+    @Query("SELECT * FROM ARTICULO WHERE idCategoria = :idCategoria")
+    public List<ArticulosConFotosYCategoria> articulosConCategoria(Long idCategoria);
+
     @Delete
     public void deleteArticulo(Articulo articulo);
 

@@ -33,6 +33,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     List<ArticulosConFotosYCategoria> listaProductos;
     private Context mContext;
+    boolean latest;
 
 
     @NonNull
@@ -79,7 +80,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 CarritoDeDAO carritoDeDAO = singleton.getDataBased(context).getCarritoDeDAO();
                 args.putLong("idArticulo", articulosConFotosYCategoria.getArticulo().getIdArticulo());
                 args.putInt("cantCarrito", carritoDeDAO.ArticleFromMyCarrito(articulosConFotosYCategoria.getArticulo().getIdArticulo(), singleton.getLoggedUser().getIdUsuario())!=null ? carritoDeDAO.ArticleFromMyCarrito(articulosConFotosYCategoria.getArticulo().getIdArticulo(), singleton.getLoggedUser().getIdUsuario()).getCantidad() : 1);
-                Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_details, args);
+                if (productListAdapter.latest)
+                    Navigation.findNavController(v).navigate(R.id.action_nav_latest_to_details, args);
+                else
+                    Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_details, args);
             });
             precioProducto.setText(articulosConFotosYCategoria.getArticulo().getPrecio().toString());
             descripcionProducto.setText(articulosConFotosYCategoria.getArticulo().getDescripcion());
@@ -92,7 +96,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                             Bundle bundle = new Bundle();
                             bundle.putLong("id", articulosConFotosYCategoria.getArticulo().getIdArticulo());
                             bundle.putBoolean("modify", true);
-                            Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_create_article, bundle);
+                            if (productListAdapter.latest) {
+                                Navigation.findNavController(v).navigate(R.id.action_nav_latest_to_create_article, bundle);
+                            } else {
+                                Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_create_article, bundle);
+                            }
                             return true;
                         case R.id.delete_product:
                             new android.app.AlertDialog.Builder(context).setTitle("Eliminar Producto").setMessage("Seguro que quiere eliminar este producto?")
