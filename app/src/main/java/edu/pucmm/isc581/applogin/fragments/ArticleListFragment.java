@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import androidx.navigation.Navigation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import edu.pucmm.isc581.applogin.R;
+import edu.pucmm.isc581.applogin.dbDaos.ArticuloDAO;
 
 public class ArticleListFragment extends Fragment {
 
 
     private static final String ARG_PARAM1 = "idCategoria";
-
     private Long idCategoria;
-
+    ArticuloDAO articuloDAO;
     public ArticleListFragment() {
     }
 

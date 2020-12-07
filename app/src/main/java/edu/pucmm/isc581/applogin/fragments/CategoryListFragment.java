@@ -25,10 +25,8 @@ public class CategoryListFragment extends Fragment {
     Singleton singleton = Singleton.getInstance();
     CategoriaDAO categoriaDAO;
 
-
     public CategoryListFragment() {
     }
-
 
     public static CategoryListFragment newInstance() {
         CategoryListFragment fragment = new CategoryListFragment();
