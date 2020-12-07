@@ -5,6 +5,9 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.navigation.Navigation;
 import com.bumptech.glide.Glide;
 import com.synnapps.carouselview.CarouselView;
 import edu.pucmm.isc581.applogin.R;
@@ -46,7 +50,7 @@ public class ArticleCreateUpdateFragment extends Fragment {
     private static int RESULT_LOAD_IMAGES = 3;
     private static int RESULT_LOAD_IMAGE = 1;
     private boolean modifiedImage = false;
-    private List<Uri> imageURIS;
+    private List<Uri> imageURIS = new ArrayList<>();
     private Boolean modify;
     private Long id;
 
@@ -162,21 +166,32 @@ public class ArticleCreateUpdateFragment extends Fragment {
                     art.setFechaCreacion(new Date());
                     art.setIdArticulo(articuloDAO.insertArticulo(art));
                     HashMap<String, Bitmap> fotoToUpload = new HashMap<>();
-                    for (int i = 0; i < imageURIS.size(); i++) {
-                        try {
-                            String nombreImagen = art.getIdArticulo().toString() + "." + Integer.toString(i) + ".articulo.jpg";
-                            fotoToUpload.put(nombreImagen, MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageURIS.get(i)));
-                            Foto foto = new Foto();
-                            foto.setIdArticulo(art.getIdArticulo());
-                            foto.setLinkImagen(nombreImagen);
-                            fotosDAO.insertFoto(foto);
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    if (imageURIS.size() > 0) {
+                        for (int i = 0; i < imageURIS.size(); i++) {
+                            try {
+                                String nombreImagen = art.getIdArticulo().toString() + "." + Integer.toString(i) + ".articulo.jpg";
+                                fotoToUpload.put(nombreImagen, MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageURIS.get(i)));
+                                Foto foto = new Foto();
+                                foto.setIdArticulo(art.getIdArticulo());
+                                foto.setLinkImagen(nombreImagen);
+                                fotosDAO.insertFoto(foto);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
+                    } else {
+                        String nombreImagen = art.getIdArticulo().toString() + ".1.articulo.jpg";
+                        fotoToUpload.put(nombreImagen, BitmapFactory.decodeResource(getResources(), R.drawable.product_image_thumbnail_placeholder));
+                        Foto foto = new Foto();
+                        foto.setIdArticulo(art.getIdArticulo());
+                        foto.setLinkImagen(nombreImagen);
+                        fotosDAO.insertFoto(foto);
                     }
+
                     UploadImages uploadImages = new UploadImages();
                     uploadImages.execute(fotoToUpload, getActivity().getApplicationContext());
                 }
+                Navigation.findNavController(v).navigateUp();
             }
 
         });
