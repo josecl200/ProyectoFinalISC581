@@ -9,7 +9,10 @@
             android:id="@+id/nav_home"
             android:name="edu.pucmm.isc581.applogin.fragments.LastArticlesFragment"
             android:label="@string/app_name"
-            tools:layout="@layout/fragment_last_articles"/>
+            tools:layout="@layout/fragment_last_articles">
+        <action android:id="@+id/action_nav_latest_to_create_article" app:destination="@id/create_article"/>
+        <action android:id="@+id/action_nav_latest_to_details" app:destination="@id/product_detail"/>
+    </fragment>
 
     <fragment
             android:id="@+id/nav_os"
@@ -23,6 +26,16 @@
             android:label="Categorias"
             tools:layout="@layout/fragment_category_list">
         <action android:id="@+id/action_nav_list_category_to_create_category2" app:destination="@id/create_category"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_shopping_cart"
+            android:name="edu.pucmm.isc581.applogin.fragments.ShoppingCartFragment"
+            android:label="Carrito de Compras"
+            tools:layout="@layout/fragment_shopping_cart">
+
+        <action android:id="@+id/action_nav_shopping_cart_to_details" app:destination="@id/product_detail"/>
+
     </fragment>
 
     <fragment

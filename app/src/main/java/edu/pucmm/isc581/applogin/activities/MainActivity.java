@@ -39,9 +39,22 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_os, R.id.nav_list_category, R.id.nav_list_article)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_cart:
+                        navController.navigate(R.id.nav_shopping_cart);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
         ImageView headerImage = navigationView.getHeaderView(0).findViewById(R.id.profileImageHeader);
         Glide.with(this).load(getString(R.string.BLOB_URL_BASE) + singleton.getLoggedUser().getImagen()).centerCrop().into(headerImage);
 

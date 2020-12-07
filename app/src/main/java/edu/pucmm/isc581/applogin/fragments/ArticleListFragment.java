@@ -55,7 +55,7 @@ public class ArticleListFragment extends Fragment {
         articuloDAO = singleton.getDataBased(getActivity().getApplicationContext()).getArticuloDAO();
         RecyclerView productView = view.findViewById(R.id.articleRecyclerView);
         Log.wtf("WHAT AM I GETTING BACK: ", articuloDAO.getArticulos().toString());
-        ProductListAdapter productListAdapter = new ProductListAdapter(articuloDAO.getArticulos(), getContext());
+        ProductListAdapter productListAdapter = new ProductListAdapter(articuloDAO.getArticulos(), getContext(), false);
         productView.setAdapter(productListAdapter);
         productView.setLayoutManager(new GridLayoutManager(getContext(),1));
 

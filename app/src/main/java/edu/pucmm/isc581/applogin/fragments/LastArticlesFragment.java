@@ -52,7 +52,7 @@ public class LastArticlesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_last_articles, container, false);
         RecyclerView productView = view.findViewById(R.id.latestArticlesRecyclerView);
-        ProductListAdapter productListAdapter = new ProductListAdapter(articuloDAO.getLatestArticulos(), getContext());
+        ProductListAdapter productListAdapter = new ProductListAdapter(articuloDAO.getLatestArticulos(), getContext(), true);
         productView.setAdapter(productListAdapter);
         productView.setLayoutManager(new GridLayoutManager(getContext(),1));
         return view;
