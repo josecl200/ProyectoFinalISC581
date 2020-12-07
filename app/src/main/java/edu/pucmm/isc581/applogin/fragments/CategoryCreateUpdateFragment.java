@@ -51,7 +51,6 @@ public class CategoryCreateUpdateFragment extends Fragment {
     EditText nombre;
     Button btnSave;
 
-    // TODO: Rename and change types of parameters
     private Boolean modify;
     private Long id;
 

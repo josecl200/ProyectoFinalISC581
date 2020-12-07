@@ -26,10 +26,44 @@
     </fragment>
 
     <fragment
+            android:id="@+id/product_detail"
+            android:name="edu.pucmm.isc581.applogin.ui.productos.DetallesProducto"
+            android:label="Detalle"
+            tools:layout="@layout/fragment_detalles_producto">
+    </fragment>
+
+    <fragment
             android:id="@+id/create_category"
             android:name="edu.pucmm.isc581.applogin.fragments.CategoryCreateUpdateFragment"
             android:label="Crear categoria"
             tools:layout="@layout/fragment_category_create_update">
+        <argument
+                android:name="modify"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        <argument
+                android:name="id"
+                app:argType="long"
+                android:defaultValue="-1L" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_list_article"
+            android:name="edu.pucmm.isc581.applogin.fragments.ArticleListFragment"
+            android:label="Articulos"
+            tools:layout="@layout/fragment_article_list">
+        <action android:id="@+id/action_nav_list_article_to_create_article" app:destination="@id/create_article"/>
+        <argument
+                android:name="idCategoria"
+                app:argType="long"
+                android:defaultValue="-1L" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/create_article"
+            android:name="edu.pucmm.isc581.applogin.fragments.ArticleCreateUpdateFragment"
+            android:label="Crear articulo"
+            tools:layout="@layout/fragment_article_create_update">
         <argument
                 android:name="modify"
                 app:argType="boolean"

@@ -13,6 +13,9 @@ public interface ArticuloDAO {
     @Transaction @Query("SELECT * FROM Articulo")
     public List<ArticulosConFotosYCategoria> getArticulos();
 
+    @Transaction @Query("SELECT * FROM Articulo WHERE idArticulo = :id")
+    public ArticulosConFotosYCategoria getArticulo(Long id);
+
     @Insert
     public long insertArticulo(Articulo articulo);
 
@@ -21,6 +24,9 @@ public interface ArticuloDAO {
 
     @Update
     public void updateArticulo(Articulo articulo);
+
+    @Query("SELECT COUNT(*) FROM ARTICULO WHERE idCategoria = :idCategoria")
+    public Integer cantArticulosConCategoria(Long idCategoria);
 
     @Delete
     public void deleteArticulo(Articulo articulo);

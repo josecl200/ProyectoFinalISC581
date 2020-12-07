@@ -17,6 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
 
@@ -33,10 +35,8 @@ public class MainActivity extends AppCompatActivity {
         Singleton singleton = Singleton.getInstance();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-                // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_os, R.id.nav_list_category)
+                R.id.nav_home, R.id.nav_os, R.id.nav_list_category, R.id.nav_list_article)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }

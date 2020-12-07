@@ -1,6 +1,7 @@
 package edu.pucmm.isc581.applogin.dbDaos;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import edu.pucmm.isc581.applogin.dbEntities.Foto;
@@ -24,6 +25,9 @@ public interface FotosDAO {
 
     @Query("SELECT * FROM Foto WHERE idArticulo = :idArt")
     public List<Foto> getFotosFromArticulo(Long idArt);
+
+    @Delete
+    public void deleteFotos(List<Foto> fotos);
 
 
 }

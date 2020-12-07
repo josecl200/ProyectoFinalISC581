@@ -12,20 +12,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
 import edu.pucmm.isc581.applogin.activities.RegisterActivity;
+import edu.pucmm.isc581.applogin.adapters.CategoryListAdapter;
 import edu.pucmm.isc581.applogin.dbDaos.CategoriaDAO;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CategoryListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CategoryListFragment extends Fragment {
+    Singleton singleton = Singleton.getInstance();
+    CategoriaDAO categoriaDAO;
+
+
     public CategoryListFragment() {
-        // Required empty public constructor
     }
 
 
@@ -42,14 +43,14 @@ public class CategoryListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_category_list, container, false);
-        //TODO: RecyclerView
+        categoriaDAO = singleton.getDataBased(getActivity().getApplicationContext()).getCategoriaDAO();
+        RecyclerView categoryView = view.findViewById(R.id.categoryRecyclerView);
+        CategoryListAdapter categoryListAdapter = new CategoryListAdapter(categoriaDAO.getCategorias(), getContext());
+        categoryView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        categoryView.setAdapter(categoryListAdapter);
         FloatingActionButton createButton = view.findViewById(R.id.createCategoryButton);
         createButton.setOnClickListener(v -> {
-            Singleton singleton = Singleton.getInstance();
-            CategoriaDAO categoriaDAO = singleton.getDataBased(getActivity().getApplicationContext()).getCategoriaDAO();
-            Log.wtf("Categorias: ", categoriaDAO.getCategorias().toString());
             Navigation.findNavController(v).navigate(R.id.action_nav_list_category_to_create_category2);
         });
         return view;
