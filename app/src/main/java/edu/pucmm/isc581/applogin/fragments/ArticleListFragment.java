@@ -18,6 +18,10 @@ import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
 import edu.pucmm.isc581.applogin.adapters.ProductListAdapter;
 import edu.pucmm.isc581.applogin.dbDaos.ArticuloDAO;
+import edu.pucmm.isc581.applogin.dbEntities.ArticulosConFotosYCategoria;
+import edu.pucmm.isc581.applogin.dbEntities.Categoria;
+
+import java.util.List;
 
 public class ArticleListFragment extends Fragment {
 
@@ -54,8 +58,12 @@ public class ArticleListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_article_list, container, false);
         articuloDAO = singleton.getDataBased(getActivity().getApplicationContext()).getArticuloDAO();
         RecyclerView productView = view.findViewById(R.id.articleRecyclerView);
-        Log.wtf("WHAT AM I GETTING BACK: ", articuloDAO.getArticulos().toString());
-        ProductListAdapter productListAdapter = new ProductListAdapter(articuloDAO.getArticulos(), getContext(), false);
+        List<ArticulosConFotosYCategoria> categorias;
+        if (idCategoria != -1L)
+            categorias = articuloDAO.articulosConCategoria(idCategoria);
+        else
+            categorias = articuloDAO.getArticulos();
+        ProductListAdapter productListAdapter = new ProductListAdapter(categorias, getContext(), false);
         productView.setAdapter(productListAdapter);
         productView.setLayoutManager(new GridLayoutManager(getContext(),1));
 
@@ -64,7 +72,6 @@ public class ArticleListFragment extends Fragment {
             Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_create_article);
         });
         return view;
-
     }
 
     @Override

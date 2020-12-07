@@ -26,6 +26,8 @@
             android:label="Categorias"
             tools:layout="@layout/fragment_category_list">
         <action android:id="@+id/action_nav_list_category_to_create_category2" app:destination="@id/create_category"/>
+        <action android:id="@+id/action_nav_list_category_to_list_article" app:destination="@id/nav_list_article"/>
+
     </fragment>
 
     <fragment
@@ -67,7 +69,7 @@
     <fragment
             android:id="@+id/nav_list_article"
             android:name="edu.pucmm.isc581.applogin.fragments.ArticleListFragment"
-            android:label="Articulos"
+            android:label="Articulos {categoria}"
             tools:layout="@layout/fragment_article_list">
         <action android:id="@+id/action_nav_list_article_to_create_article" app:destination="@id/create_article"/>
         <action android:id="@+id/action_nav_list_article_to_details" app:destination="@id/product_detail"/>
@@ -76,6 +78,10 @@
                 android:name="idCategoria"
                 app:argType="long"
                 android:defaultValue="-1L" />
+        <argument
+                android:name="categoria"
+                app:argType="string"
+                android:defaultValue="" />
     </fragment>
 
     <fragment

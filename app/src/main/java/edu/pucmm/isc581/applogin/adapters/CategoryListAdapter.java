@@ -67,6 +67,12 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         public void bindData(Categoria categoria, int position, Context context, CategoryListAdapter adapter){
             Glide.with(context).load(context.getString(R.string.BLOB_URL_BASE) + categoria.getFoto()).into(imagenCategoria);
             nombreCategoria.setText(categoria.getNombre());
+            categoryCard.setOnClickListener(v -> {
+                Bundle args = new Bundle();
+                args.putLong("idCategoria", categoria.getIdCategoria());
+                args.putString("categoria", "de la categoria " + categoria.getNombre());
+                Navigation.findNavController(v).navigate(R.id.action_nav_list_category_to_list_article, args);
+            });
             botonMenu.setOnClickListener( v -> {
                 PopupMenu menu = new PopupMenu(v.getContext(), v);
                 menu.inflate(R.menu.category_tuerca);
