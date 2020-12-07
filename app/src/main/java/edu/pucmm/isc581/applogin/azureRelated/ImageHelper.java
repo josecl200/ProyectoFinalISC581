@@ -53,4 +53,21 @@ public class ImageHelper {
         }
         return false;
     }
+
+    public static Boolean deleteImages(String filename){
+        try{
+            CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+
+            CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+
+            CloudBlobContainer container = blobClient.getContainerReference(storageContainer);
+            CloudBlockBlob blob = container.getBlockBlobReference(filename);
+            return blob.deleteIfExists();
+        }
+        catch (Exception e) {
+            Log.wtf("QEXCEPTION_IMAGEEN:", e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
