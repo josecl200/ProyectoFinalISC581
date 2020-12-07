@@ -17,21 +17,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
 import edu.pucmm.isc581.applogin.dbDaos.ArticuloDAO;
 import edu.pucmm.isc581.applogin.dbEntities.ArticulosConFotosYCategoria;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductViewHolder> {
 
-    ArrayList<ArticulosConFotosYCategoria> listaProductos;
+    List<ArticulosConFotosYCategoria> listaProductos;
     private Context mContext;
 
-    public ProductListAdapter(ArrayList<ArticulosConFotosYCategoria> listaProductos) {
-        this.listaProductos = listaProductos;
-    }
 
     @NonNull
     @Override
@@ -72,6 +71,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public void bindData(ArticulosConFotosYCategoria articulosConFotosYCategoria, int position, Context context, ProductListAdapter productListAdapter) {
             Glide.with(context).load("https://temaepeciale.blob.core.windows.net/temaepeciale/" + articulosConFotosYCategoria.getFotos()).into(imagenProducto);
             nombreProducto.setText(articulosConFotosYCategoria.getArticulo().getNombre());
+            precioProducto.setText(articulosConFotosYCategoria.getArticulo().getPrecio().toString());
+            descripcionProducto.setText(articulosConFotosYCategoria.getArticulo().getDescripcion());
+
             botonMenu.setOnClickListener(v -> {
                 PopupMenu menu = new PopupMenu(v.getContext(), v);
                 menu.inflate(R.menu.producto_tuerca);
@@ -84,8 +86,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                             Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_create_article, bundle);
                             return true;
                         case R.id.delete_product:
-                           new AlertDialog.Builder(context).setTitle("Eliminar Producto").setMessage("Seguro que quiere eliminar este producto?");
-                            new android.app.AlertDialog.Builder(context).setTitle("Borrar categoria").setMessage("Está seguro de que quiere borrar esta categoria? Esta acción no es reversible")
+                            new android.app.AlertDialog.Builder(context).setTitle("Eliminar Producto").setMessage("Seguro que quiere eliminar este producto?")
                                     .setPositiveButton("Si", (dialogInterface, i1) -> {
                                        articuloDao = singleton.getDataBased(context).getArticuloDAO();
                                        articuloDao.deleteArticulo(articulosConFotosYCategoria.getArticulo());
