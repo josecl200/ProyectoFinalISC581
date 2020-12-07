@@ -31,6 +31,15 @@
     </fragment>
 
     <fragment
+        android:id="@+id/nav_orders"
+        android:name="edu.pucmm.isc581.applogin.fragments.ListOrdersFragment"
+        android:label="Ordenes pasadas"
+        tools:layout="@layout/fragment_list_orders"
+    >
+
+    </fragment>
+
+    <fragment
             android:id="@+id/nav_shopping_cart"
             android:name="edu.pucmm.isc581.applogin.fragments.ShoppingCartFragment"
             android:label="Carrito de Compras"
