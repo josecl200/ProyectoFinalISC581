@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import edu.pucmm.isc581.applogin.R;
 import edu.pucmm.isc581.applogin.Singleton;
+import edu.pucmm.isc581.applogin.asyncTasks.DeleteImage;
 import edu.pucmm.isc581.applogin.dataModels.OsDataModel;
 import edu.pucmm.isc581.applogin.dbDaos.ArticuloDAO;
 import edu.pucmm.isc581.applogin.dbDaos.CategoriaDAO;
@@ -86,6 +87,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
                                         .setPositiveButton("Si", (dialogInterface, i1) -> {
                                             categoriaDAO = singleton.getDataBased(context).getCategoriaDAO();
                                             categoriaDAO.deleteCategoria(categoria);
+                                            new DeleteImage().execute(categoria.getFoto());
                                             adapter.categorias.remove(position);
                                             adapter.notifyItemRemoved(position);
                                             adapter.notifyItemRangeChanged(position, adapter.categorias.size());
