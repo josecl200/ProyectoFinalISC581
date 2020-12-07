@@ -1,6 +1,7 @@
 package edu.pucmm.isc581.applogin.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,11 +70,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         }
 
         public void bindData(ArticulosConFotosYCategoria articulosConFotosYCategoria, int position, Context context, ProductListAdapter productListAdapter) {
-            Glide.with(context).load("https://temaepeciale.blob.core.windows.net/temaepeciale/" + articulosConFotosYCategoria.getFotos()).into(imagenProducto);
+            Glide.with(context).load(context.getString(R.string.BLOB_URL_BASE) + articulosConFotosYCategoria.getFotos().get(0).getLinkImagen()).into(imagenProducto);
             nombreProducto.setText(articulosConFotosYCategoria.getArticulo().getNombre());
             precioProducto.setText(articulosConFotosYCategoria.getArticulo().getPrecio().toString());
             descripcionProducto.setText(articulosConFotosYCategoria.getArticulo().getDescripcion());
-
             botonMenu.setOnClickListener(v -> {
                 PopupMenu menu = new PopupMenu(v.getContext(), v);
                 menu.inflate(R.menu.producto_tuerca);

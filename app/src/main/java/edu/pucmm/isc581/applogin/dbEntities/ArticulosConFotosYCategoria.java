@@ -17,4 +17,6 @@ public class ArticulosConFotosYCategoria {
     @Relation(parentColumn = "idArticulo", entityColumn = "idArticulo")
     private List<Foto> fotos;
 
+
+
 }

@@ -30,4 +30,6 @@ public interface ArticuloDAO {
 
     @Delete
     public void deleteArticulo(Articulo articulo);
+
+
 }

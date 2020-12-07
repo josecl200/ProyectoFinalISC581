@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,9 +54,11 @@ public class ArticleListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_article_list, container, false);
         articuloDAO = singleton.getDataBased(getActivity().getApplicationContext()).getArticuloDAO();
         RecyclerView productView = view.findViewById(R.id.articleRecyclerView);
+        Log.wtf("WHAT AM I GETTING BACK: ", articuloDAO.getArticulos().toString());
         ProductListAdapter productListAdapter = new ProductListAdapter(articuloDAO.getArticulos(), getContext());
-        productView.setLayoutManager(new GridLayoutManager(getContext(),1));
         productView.setAdapter(productListAdapter);
+        productView.setLayoutManager(new GridLayoutManager(getContext(),1));
+
         FloatingActionButton createButton = view.findViewById(R.id.createArticleButton);
         createButton.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_nav_list_article_to_create_article);

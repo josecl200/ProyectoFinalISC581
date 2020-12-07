@@ -156,7 +156,7 @@ public class ArticleCreateUpdateFragment extends Fragment {
 
                         UploadImages uploadImages = new UploadImages();
                         uploadImages.execute(fotoToUpload, getActivity().getApplicationContext());
-                    }
+                    }//noelse
                 } else {
                     Articulo art = new Articulo();
                     art.setNombre(nombre.getText().toString());
