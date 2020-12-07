@@ -100,6 +100,19 @@
                 app:argType="long"
                 android:defaultValue="-1L" />
     </fragment>
-   
+    <fragment
+        android:id="@+id/editUser"
+        android:name="edu.pucmm.isc581.applogin.fragments.ProfileUpdateFragment"
+        android:label="Edit Information"
+        tools:layout="@layout/fragment_profile_edit"
+        >
+    </fragment>
+    <fragment
+        android:id="@+id/myProfile"
+        android:name="edu.pucmm.isc581.applogin.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action android:id="@+id/action_profile_nav_to_editProfile" app:destination="@id/editUser"/>
+    </fragment>
 
 </navigation>
